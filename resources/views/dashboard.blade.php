@@ -43,9 +43,9 @@
         <div class="bg-white p-6 rounded-lg shadow-md">
             <h3 class="text-xl font-semibold mb-4">إدارة الصور</h3>
             <div class="grid grid-cols-3 gap-4">
-                @foreach($images as $image)
+                @foreach($images as $image)  
                 <div class="relative border p-4 rounded-lg bg-gray-50 group">
-                    <img src="{{ asset($image->path) }}" alt="{{ $image->title }}" class="w-full h-48 object-cover mb-2 rounded text-lg font-semibold">                    <h4 class="text-lg font-semibold">{{ $image->title }}</h4>
+                    <img src="{{ asset($image->image) }}" alt="{{ $image->title }}" class="w-full h-48 object-cover mb-2 rounded text-lg font-semibold">                    <h4 class="text-lg font-semibold">{{ $image->title }}</h4>
                     <div class="flex space-x-2">
                         <!-- زر عرض الصورة -->
                         <a href="{{ asset('storage/' . $image->path) }}" target="_blank" class="bg-blue-600 text-white px-3 py-2 rounded-full hover:bg-blue-700 focus:outline-none">
