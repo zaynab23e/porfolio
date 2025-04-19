@@ -17,14 +17,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-
-Route::post('/register', [AuthController::class, 'register']); 
-Route::post('/login', [AuthController::class, 'login']);
-
-Route::group(['middleware' => ['auth:sanctum', 'auth:admin']], function () {
-    Route::post('/logout', [AuthController::class, 'logout']); 
-    Route::post('store_images', [ImageController::class, 'store']);
     Route::get('images/api', [ImageController::class, 'indexApi']);
-    Route::delete('images/{id}', [ImageController::class, 'destroyApi']);
-});
+
 

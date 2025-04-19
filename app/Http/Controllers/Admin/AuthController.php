@@ -14,7 +14,7 @@ class AuthController extends Controller
 
 public function loginAdmin(Request $request)
 {
-    return view('login');
+    return view('login'); 
 }
 //________________________________________________________________________________________________________
 
