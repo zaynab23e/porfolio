@@ -13,7 +13,7 @@ class ImageController extends Controller
     {
         $validateData = $request->validate([
             'title' => 'required|string|max:255',
-            'path' => 'required|image|mimes:jpg,jpeg,png|max:2048'
+            'image' => 'required|image|mimes:jpg,jpeg,png|max:2048'
         ]);
 
         Image::create($validateData);
@@ -23,20 +23,20 @@ class ImageController extends Controller
 
     public function index()
     {
-        $images = Image::select('id', 'title', 'path')->get();
+        $images = Image::select('id', 'title', 'image')->get();
         return view('dashboard', compact('images'));
     }
 
     public function indexApi()
     {
-        $images = Image::select('id', 'title', 'path')->get();
+        $images = Image::select('id', 'title', 'image')->get();
         return response()->json(['message' => $images], 200);
     }
 
     public function destroy($id)
     {
         $image = Image::findOrFail($id);
-        Storage::disk('public')->delete(ltrim($image->path, '/'));
+        Storage::disk('public')->delete(ltrim($image->image, '/'));
         $image->delete();
 
         return redirect()->route('images.index')->with('success', 'تم حذف الصورة بنجاح');
@@ -45,7 +45,7 @@ class ImageController extends Controller
     public function destroyApi($id)
     {
         $image = Image::findOrFail($id);
-        Storage::disk('public')->delete(ltrim($image->path, '/'));
+        Storage::disk('public')->delete(ltrim($image->image, '/'));
         $image->delete();
 
         return response()->json(['message' => 'تم حذف الصورة بنجاح'], 200);
