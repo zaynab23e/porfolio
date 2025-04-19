@@ -13,7 +13,7 @@ class ImageController extends Controller
     {
         $validateData = $request->validate([
             'title' => 'required|string|max:255',
-            'image' => 'required|image|mimes:jpg,jpeg,png|max:2048'
+            'path' => 'required|image|mimes:jpg,jpeg,png|max:2048'
         ]);
 
         Image::create($validateData);
