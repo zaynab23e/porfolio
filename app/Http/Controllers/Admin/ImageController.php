@@ -16,9 +16,6 @@ class ImageController extends Controller
             'image' => 'required|image|mimes:jpg,jpeg,png|max:2048'
         ]);
 
-        $path = $request->file('image')->store('images', 'public');
-        $validateData['path'] = '/' . $path;
-
         Image::create($validateData);
 
         return redirect()->route('images.index')->with('success', 'تم حفظ الصورة بنجاح');
